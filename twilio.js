@@ -8,7 +8,7 @@ app.use(express.static(__dirname + '/public'));
 app.get('/', function(req, res) {
 	var twiml = new twilio.TwimlResponse();
     twiml.say('Welcome to Peace Leaders')
-    .gather({action:'/input',
+    .gather({
         finishOnKey:'*'
     }, function() {
         this.say('Press 1 to hear Pope Francis latest tweet ')
