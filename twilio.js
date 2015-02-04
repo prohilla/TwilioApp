@@ -19,8 +19,8 @@ app.get('/', function(req, res) {
     res.end(twiml.toString());
 });
 
-app.post('/input', function(req, res) {
-	var digit =req.body.Digits;
+app.post('/', function(req, res) {
+	var digit =request.param('Digits');
 	if(digit===1){
 		var twiml1 = new twilio.TwimlResponse();
 	    twiml1.say('you have chosen Pope francis');
