@@ -1,8 +1,12 @@
-var http = require('http');
+var express = require('express');
 var twilio = require('twilio');
-http.createServer(function handler(req, res) {
-	 //Create TwiML response
-    var twiml = new twilio.TwimlResponse();
+var app = express();
+
+app.set('port', (process.env.PORT || 5000));
+app.use(express.static(__dirname + '/public'));
+
+app.get('/', function(req, res) {
+	var twiml = new twilio.TwimlResponse();
     twiml.say('Welcome to Peace Leaders')
     .gather({
         finishOnKey:'*'
@@ -13,6 +17,8 @@ http.createServer(function handler(req, res) {
 
     res.writeHead(200, {'Content-Type': 'text/xml'});
     res.end(twiml.toString());
-    
-}).listen(1337, '127.0.0.1');
-console.log('Server running at http://127.0.0.1:1337/');
+});
+
+app.listen(app.get('port'), function() {
+  console.log("Node app is running at localhost:" + app.get('port'));
+});
