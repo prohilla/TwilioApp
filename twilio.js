@@ -8,7 +8,7 @@ app.use(express.static(__dirname + '/public'));
 app.get('/', function(req, res) {
 	var twiml = new twilio.TwimlResponse();
     twiml.say('Welcome to Peace Leaders')
-    .gather({ action:'https://ancient-beyond-7874.herokuapp.com/input',
+    .gather({ action:'https://secure-hollows-8464.herokuapp.com',
         finishOnKey:'*'
     }, function() {
         this.say('Press 1 to hear Pope Francis latest tweet ')
@@ -17,25 +17,6 @@ app.get('/', function(req, res) {
 
     res.writeHead(200, {'Content-Type': 'text/xml'});
     res.end(twiml.toString());
-});
-
-app.post('/input', function(req, res) {
-	var digit =req.param('Digits');
-	var leader="none";
-	if(digit===1){
-		this.leader="Pope Francis";
-		
-	}
-	if(digit===2){
-		this.leader="Dalai Lama";
-		
-	}
-	
-	var twiml2 = new twilio.TwimlResponse();
-    twiml2.say('you have chosen'+this.leader+'');
-
-    res.writeHead(200, {'Content-Type': 'text/xml'});
-    res.end(twiml2.toString());
 });
 
 app.listen(app.get('port'), function() {
