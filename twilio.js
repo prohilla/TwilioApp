@@ -8,7 +8,7 @@ app.use(express.static(__dirname + '/public'));
 app.get('/', function(req, res) {
 	var twiml = new twilio.TwimlResponse();
     twiml.say('Welcome to Peace Leaders')
-    .gather({
+    .gather({action:'/input',
         finishOnKey:'*'
     }, function() {
         this.say('Press 1 to hear Pope Francis latest tweet ')
@@ -17,6 +17,26 @@ app.get('/', function(req, res) {
 
     res.writeHead(200, {'Content-Type': 'text/xml'});
     res.end(twiml.toString());
+});
+
+app.post('/input', function(req, res) {
+	var digit =req.body.Digits;
+	if(digit===1){
+		var twiml1 = new twilio.TwimlResponse();
+	    twiml1.say('you have chosen Pope francis');
+
+	    res.writeHead(200, {'Content-Type': 'text/xml'});
+	    res.end(twiml1.toString());
+		
+	}
+	if(digit===2){
+		var twiml2 = new twilio.TwimlResponse();
+	    twiml2.say('you have chosen dalai lama');
+
+	    res.writeHead(200, {'Content-Type': 'text/xml'});
+	    res.end(twiml2.toString());
+		
+	}
 });
 
 app.listen(app.get('port'), function() {
