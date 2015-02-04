@@ -21,22 +21,21 @@ app.get('/', function(req, res) {
 
 app.post('/input', function(req, res) {
 	var digit =req.param('Digits');
+	var leader="none";
 	if(digit===1){
-		var twiml1 = new twilio.TwimlResponse();
-	    twiml1.say('you have chosen Pope francis');
-
-	    res.writeHead(200, {'Content-Type': 'text/xml'});
-	    res.end(twiml1.toString());
+		this.leader="Pope Francis";
 		
 	}
 	if(digit===2){
-		var twiml2 = new twilio.TwimlResponse();
-	    twiml2.say('you have chosen dalai lama');
-
-	    res.writeHead(200, {'Content-Type': 'text/xml'});
-	    res.end(twiml2.toString());
+		this.leader="Dalai Lama";
 		
 	}
+	
+	var twiml2 = new twilio.TwimlResponse();
+    twiml2.say('you have chosen'+this.leader+'');
+
+    res.writeHead(200, {'Content-Type': 'text/xml'});
+    res.end(twiml2.toString());
 });
 
 app.listen(app.get('port'), function() {
