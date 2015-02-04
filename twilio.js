@@ -20,7 +20,7 @@ app.get('/', function(req, res) {
 });
 
 app.post('/input', function(req, res) {
-	var digit =request.param('Digits');
+	var digit =req.param('Digits');
 	if(digit===1){
 		var twiml1 = new twilio.TwimlResponse();
 	    twiml1.say('you have chosen Pope francis');
