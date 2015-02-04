@@ -5,7 +5,7 @@ var app = express();
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
 
-app.get('/input', function(req, res) {
+app.get('/', function(req, res) {
 	var twiml = new twilio.TwimlResponse();
     twiml.say('Welcome to Peace Leaders')
     .gather({ action:'https://secure-hollows-8464.herokuapp.com/input',
