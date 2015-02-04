@@ -8,7 +8,7 @@ app.use(express.static(__dirname + '/public'));
 app.get('/', function(req, res) {
 	var twiml = new twilio.TwimlResponse();
     twiml.say('Welcome to Peace Leaders')
-    .gather({
+    .gather({ action:'https://ancient-beyond-7874.herokuapp.com/input',
         finishOnKey:'*'
     }, function() {
         this.say('Press 1 to hear Pope Francis latest tweet ')
@@ -19,7 +19,7 @@ app.get('/', function(req, res) {
     res.end(twiml.toString());
 });
 
-app.post('/', function(req, res) {
+app.post('/input', function(req, res) {
 	var digit =request.param('Digits');
 	if(digit===1){
 		var twiml1 = new twilio.TwimlResponse();
