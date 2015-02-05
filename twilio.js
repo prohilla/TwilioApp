@@ -3,10 +3,10 @@ var twilio = require('twilio');
 var app = express();
 var Twitter = require('twitter');
 var client = new Twitter({
-	  consumer_key: '6ijcT3P8IqxkmWPEzT0v20VVo',
-	  consumer_secret: '5MmnwTd5Qmg2MPY3uBoa4boa2zu1rYCICDh1GHfsb0JBSnOVBR',
-	  access_token_key: '2916652344-eIJpB9xrKnVRDVRA0w5QgMixkYBTlObV3ErrHn2',
-	  access_token_secret: '6tVR4SA6vqKIfEYGbbbc2U7l9REvVV6cPUub8wjmTIIVT'
+	  consumer_key: '',
+	  consumer_secret: '',
+	  access_token_key: '',
+	  access_token_secret: ''
 	});
 
 app.set('port', (process.env.PORT || 5000));
