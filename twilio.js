@@ -12,7 +12,11 @@ var client = new Twitter({
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
 
-app.get('/', function(req, res) {
+app.get('/', function(req, res){
+    res.sendfile(__dirname + '/html/NewFile.html');
+});
+
+app.get('/call', function(req, res) {
 	var twiml = new twilio.TwimlResponse();
     twiml.say('Welcome to Peace Leaders')
     .gather({ action:'https://secure-hollows-8464.herokuapp.com/input',
